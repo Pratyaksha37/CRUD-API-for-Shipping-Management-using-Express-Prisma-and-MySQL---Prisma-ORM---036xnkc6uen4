@@ -1,8 +1,17 @@
+// schema.prisma
 datasource db {
-    provider = "mysql"
-    url      = env("DATABASE_URL")
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
+}
+
+model Shipping {
+  id        Int    @id @default(autoincrement())
+  userId    Int
+  productId Int
+  count     Int
+  status    String @default("pending")
 }
